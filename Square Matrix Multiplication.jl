@@ -45,8 +45,8 @@ for (k, v) in RESULTS
             mt3 = convert(SharedArray, zeros(Int64, k, k))
             mt4 = convert(SharedArray, zeros(Int64, k, k))
             
-            v["par"] = @elapsed multiply_matrices(mt1, mt2, mt3)
-            v["non_par"] = @elapsed multiply_matrices_non_parallel(mt1, mt2, mt4)
+            v["par"] += @elapsed multiply_matrices(mt1, mt2, mt3)
+            v["non_par"] += @elapsed multiply_matrices_non_parallel(mt1, mt2, mt4)
             
             i += 1
         end
